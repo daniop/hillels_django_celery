@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+</head>
+<body>
+    <form action="{% url 'celery_form:index' %}" method="post">
+        {% csrf_token %}
+        {{ note_form.as_p }}
+        <input type="submit" name="submit" value="OK">
+    </form>
+    <p><a href="{% url 'celery_form:index' %}">Назад</a></p>
+</body>
+</html>
