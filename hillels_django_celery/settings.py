@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'celery_form',
 
-    'django_celery_results',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +134,12 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'add-every-30-seconds': {
+        'task': 'celery_form.tasks.parse_quote',
+        'schedule': crontab(hour='1-23/2'),
+    },
+}
 
 # Email
 
