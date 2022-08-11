@@ -135,9 +135,9 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_BEAT_SCHEDULE = {
-    'add-every-30-seconds': {
+    'email-every-odd-hours': {
         'task': 'celery_form.tasks.parse_quote',
-        'schedule': crontab(hour='1-23/2'),
+        'schedule': crontab(hour='1-23/2', minute=0),
     },
 }
 
