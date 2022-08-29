@@ -20,3 +20,9 @@ class PostForm(forms.Form):
         if not timezone.now() < data < timezone.now() + timedelta(days=2):
             raise ValidationError('Датавремя не может быть в прошлом, и не может быть более чем на 2 дня вперед.')
         return data
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Имя', max_length=30)
+    email = forms.EmailField(label='Email', max_length=30)
+    message = forms.CharField(label='Сообщение', max_length=300)

@@ -24,6 +24,17 @@ def send_task(subject, email_recipient, message):
 
 
 @shared_task
+def send_contact(subject, email, message):
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=email,
+        recipient_list=['admin@example.com'],
+        fail_silently=False
+    )
+
+
+@shared_task
 def email_done():
     send_mail(
         subject='Job is done',
