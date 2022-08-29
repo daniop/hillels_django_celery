@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'celery_form',
 
     'django_extensions',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,7 @@ CELERY_BEAT_SCHEDULE = {
 # Email
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'celery_form/static',
+]

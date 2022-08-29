@@ -18,5 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('celery_form/', include('celery_form.urls')),
+    path('celery_forms/', include('celery_form.urls')),
 ]
